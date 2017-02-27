@@ -36,7 +36,7 @@ public class DBUtilis {
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBUtilis.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -45,7 +45,7 @@ public class DBUtilis {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBUtilis.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         String hostname = "IPRO";
@@ -55,9 +55,8 @@ public class DBUtilis {
         String password = "Feb2017";
         String jdbc = String.format("jdbc:mysql://%s:%s/%s", hostname, port, dbname);
         return DriverManager.getConnection(jdbc, username, password);
+        
+        
     }
 
-}
-
-//helllooooooooooooooooooooo
 }
