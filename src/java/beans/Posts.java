@@ -6,6 +6,8 @@
 package beans;
 
 import java.util.List;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -37,6 +39,31 @@ public class Posts {
         return "addPost";
     }
     
+    public String delete() throws SQLException{
+        Connection conn = DBUtilis.getConnection();
+        String query = "DELETE FROM posts WHERE id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, currentPost.getId());
+        pstmt.executeUpdate();
+        
+        getPostsFromDB();
+        currentPost = new Post(-1, -1, "", null, "");
+        return "index";
+    }
+    
+    private void getPostsFromDB() throws SQLException{
+        
+        Connection conn = DBUtilis.getConnection();
+        String query = "SELECT * FROM posts";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        posts = new ArrayList<>();
+        while (rs.next()){
+            Post p = new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("title"), rs.getTimestamp("createdTime"), rs.getString("contents"));
+            posts.add(p);
+        }
+    }
     
     
 }
