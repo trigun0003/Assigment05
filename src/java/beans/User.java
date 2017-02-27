@@ -15,12 +15,12 @@ public class User {
     
     private int id;
     private String username;
-    private String password;
+    private String passhash;
     
-        public User(int id, String username, String password) {
+        public User(int id, String username, String passhash) {
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.passhash = passhash;
     }
 
     public int getId() {
@@ -39,12 +39,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasshash() {
+        return passhash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasshash(String passhash) {
+        this.passhash = passhash;
     }
         
     
