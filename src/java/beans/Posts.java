@@ -133,7 +133,7 @@ public class Posts {
 
         posts = new ArrayList<>();
         while (rs.next()) {
-            Post p = new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("title"), rs.getDate("createdTime"), rs.getString("contents"));
+            Post p = new Post(rs.getInt("id"), rs.getInt("user_id"), rs.getString("title"), rs.getDate("created_time"), rs.getString("contents"));
             posts.add(p);
         }
     }

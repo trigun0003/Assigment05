@@ -29,14 +29,8 @@ public class Users {
     }
     
     public static void getUsersFromDB() throws SQLException{
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String url ="jdbc:mysql://localhost:3306/blog";
-        Connection conn = DriverManager.getConnection(url, "root", "");
         
+        Connection conn = DBUtilis.getConnection();
         String query = "SELECT * FROM users";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
