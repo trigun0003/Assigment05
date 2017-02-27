@@ -55,13 +55,8 @@ public class SignUp {
     public String signUp() throws SQLException{
         String page = "signUp";
         if (password1.equals(password2)){
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            String url ="jdbc:mysql://localhost:3306/blog";
-            Connection conn = DriverManager.getConnection(url, "root", "");
+            
+            Connection conn = DBUtilis.getConnection();
         
             String query = "INSERT INTO users(username, passhash) VALUES (?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(query);
